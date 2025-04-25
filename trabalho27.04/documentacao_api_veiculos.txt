@@ -1,0 +1,62 @@
+
+DOCUMENTAÇÃO - API DE CADASTRO DE VEÍCULOS (FLASK + SQLITE)
+-----------------------------------------------------------
+
+1. SOBRE O PROJETO
+Esta aplicação é uma API REST com banco de dados SQLite desenvolvida em Python usando o framework Flask. Ela permite realizar operações de cadastro, listagem e remoção de veículos. Também possui uma interface web (front-end) simples feita em HTML, CSS (Bootstrap) e JavaScript, que consome os serviços da API.
+
+2. COMO EXECUTAR
+
+1. Verifique se o Python está instalado.
+2. Instale os pacotes necessários com o seguinte comando no terminal:
+   pip install flask flask-cors
+3. Execute o arquivo principal:
+   python app.py
+4. Acesse no navegador o endereço:
+   http://127.0.0.1:5000
+
+3. ESTRUTURA DO PROJETO
+
+- app.py: Arquivo principal da aplicação (API Flask)
+- veiculos.db: Banco de dados local SQLite
+- templates/index.html: Página HTML com formulário e lista de veículos
+- static/script.js: Script JavaScript para interagir com a API
+
+4. ENDPOINTS DA API
+
+• GET /veiculos
+Retorna todos os veículos cadastrados.
+Exemplo de resposta:
+[
+  { "id": 1, "marca": "Fiat", "modelo": "Uno", "ano": 2015 },
+  { "id": 2, "marca": "Chevrolet", "modelo": "Onix", "ano": 2022 }
+]
+
+• POST /veiculos
+Cadastra um novo veículo.
+Enviar dados em formato JSON no corpo da requisição:
+{
+  "marca": "Toyota",
+  "modelo": "Corolla",
+  "ano": 2020
+}
+
+• DELETE /veiculos/<id>
+Remove um veículo pelo ID.
+Exemplo:
+DELETE /veiculos/2
+
+5. FUNCIONAMENTO DO FRONT-END
+
+Ao abrir o navegador em http://127.0.0.1:5000, a interface mostrará:
+- Um formulário para preencher os dados do veículo
+- Um botão "Cadastrar"
+- Uma lista de veículos cadastrados com botão "Remover"
+
+Toda ação feita na página comunica-se com a API, atualizando o conteúdo dinamicamente.
+
+6. OBSERVAÇÕES
+
+- O banco de dados é criado automaticamente na primeira execução.
+- O projeto utiliza flask_cors para permitir que o front-end consuma a API sem problemas de CORS.
+- O botão "Remover" está estilizado com Bootstrap (btn btn-danger) para melhor aparência.
